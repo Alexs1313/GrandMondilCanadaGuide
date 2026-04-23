@@ -15,6 +15,7 @@ import {
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useFocusEffect} from '@react-navigation/native';
 
 type GrnmdlccanadguiidecollcWallpaper = {
   id: string;
@@ -154,27 +155,30 @@ export default function Grnmdlccanadguiidecollc() {
     [grnmdlccanadguiidecollcShakeX],
   );
 
-  useEffect(() => {
-    (async () => {
-      const rawLeaves = await AsyncStorage.getItem(
-        grnmdlccanadguiidecollcMapleKey,
-      );
-      const parsedLeaves = grnmdlccanadguiidecollcParseIntSafe(rawLeaves);
-      const nextLeaves =
-        parsedLeaves === null
-          ? grnmdlccanadguiidecollcDefaultLeaves
-          : parsedLeaves;
+  const grnmdlccanadguiidecollcSyncFromStorage = useCallback(async () => {
+    const rawLeaves = await AsyncStorage.getItem(grnmdlccanadguiidecollcMapleKey);
+    const parsedLeaves = grnmdlccanadguiidecollcParseIntSafe(rawLeaves);
+    const nextLeaves =
+      parsedLeaves === null ? grnmdlccanadguiidecollcDefaultLeaves : parsedLeaves;
 
-      setGrnmdlccanadguiidecollcLeaves(nextLeaves);
-      await AsyncStorage.setItem(
-        grnmdlccanadguiidecollcMapleKey,
-        String(nextLeaves),
-      );
+    setGrnmdlccanadguiidecollcLeaves(nextLeaves);
+    if (parsedLeaves === null) {
+      await AsyncStorage.setItem(grnmdlccanadguiidecollcMapleKey, String(nextLeaves));
+    }
 
-      const unlockedIds = await grnmdlccanadguiidecollcLoadUnlocked();
-      setGrnmdlccanadguiidecollcUnlocked(unlockedIds);
-    })();
+    const unlockedIds = await grnmdlccanadguiidecollcLoadUnlocked();
+    setGrnmdlccanadguiidecollcUnlocked(unlockedIds);
   }, []);
+
+  useEffect(() => {
+    grnmdlccanadguiidecollcSyncFromStorage();
+  }, [grnmdlccanadguiidecollcSyncFromStorage]);
+
+  useFocusEffect(
+    useCallback(() => {
+      grnmdlccanadguiidecollcSyncFromStorage();
+    }, [grnmdlccanadguiidecollcSyncFromStorage]),
+  );
 
   const grnmdlccanadguiidecollcUnlockedCount =
     grnmdlccanadguiidecollcUnlocked.length;

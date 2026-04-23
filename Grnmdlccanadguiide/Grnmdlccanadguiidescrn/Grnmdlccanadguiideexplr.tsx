@@ -469,7 +469,7 @@ const Grnmdlccanadguiideexplr = () => {
                           </Text>
                           <Text
                             style={styles.grnmdlccanadguiideexplrcategoryemoji}>
-                            {item.emoji ? `${item.emoji} ` : '\ud83c\udf41'}
+                            {item.emoji ? `${item.emoji} ` : '🍁'}
                           </Text>
                         </View>
                       </LinearGradient>
@@ -541,6 +541,7 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF0F',
     backgroundColor: '#152B1C',
     justifyContent: 'flex-end',
+    overflow: 'hidden',
   },
   grnmdlccanadguiideexplrcategorycardactive: {
     borderColor: '#CCB500',
@@ -579,7 +580,7 @@ const styles = StyleSheet.create({
   grnmdlccanadguiideexplrcategoriescontent: {paddingRight: 20, paddingLeft: 20},
   grnmdlccanadguiideexplrcategoryouter: {marginRight: 12},
 
-  grnmdlccanadguiideexplrcategoryinner: {padding: 12},
+  grnmdlccanadguiideexplrcategoryinner: {padding: 12, overflow: 'hidden'},
   grnmdlccanadguiideexplrcategorytitle: {
     color: '#FFFFFF',
     fontWeight: '900',
@@ -595,7 +596,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     position: 'absolute',
     bottom: -6,
-    right: -8,
+    right: -6,
     opacity: 0.5,
   },
 
