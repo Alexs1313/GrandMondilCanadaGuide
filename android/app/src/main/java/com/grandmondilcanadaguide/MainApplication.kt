@@ -1,4 +1,4 @@
-package com.grandmondilcanadaguide
+package com.granmondil.canada.explorer
 
 import android.app.Application
 import com.facebook.react.PackageList

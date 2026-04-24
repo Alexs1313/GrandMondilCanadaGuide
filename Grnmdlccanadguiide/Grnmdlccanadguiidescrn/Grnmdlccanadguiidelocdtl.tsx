@@ -635,7 +635,7 @@ const styles = StyleSheet.create({
   grnmdlccanadguiidelocdtlgradientoverlay: {
     position: 'absolute',
     height: 220,
-    bottom: 0,
+    bottom: 10,
     width: '100%',
   },
 

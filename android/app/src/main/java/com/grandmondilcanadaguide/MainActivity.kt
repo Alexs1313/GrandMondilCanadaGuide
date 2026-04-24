@@ -1,4 +1,4 @@
-package com.grandmondilcanadaguide
+package com.granmondil.canada.explorer
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

@@ -413,7 +413,9 @@ const Grnmdlccanadguiideexplr = () => {
   }, []);
 
   return (
-    <View style={styles.grnmdlccanadguiideexplrroot}>
+    <LinearGradient
+      colors={['rgb(32, 69, 30)', 'rgb(6, 25, 12)']}
+      style={styles.grnmdlccanadguiideexplrroot}>
       <FlatList
         data={grnmdlccanadguiideexplrFiltered}
         keyExtractor={i => i.id}
@@ -526,7 +528,7 @@ const Grnmdlccanadguiideexplr = () => {
           );
         }}
       />
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -548,7 +550,7 @@ const styles = StyleSheet.create({
     width: 135,
   },
 
-  grnmdlccanadguiideexplrroot: {flex: 1, backgroundColor: '#0A1810'},
+  grnmdlccanadguiideexplrroot: {flex: 1},
 
   grnmdlccanadguiideexplrlistcontent: {
     paddingTop: 60,
